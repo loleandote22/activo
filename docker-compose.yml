@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  activemq:
+    image: rmohr/activemq:latest
+    container_name: activemq
+    ports:
+      - "61616:61616"
+      - "8161:8161"
+      - "61613:61613"
+    environment:
+      - ACTIVEMQ_ADMIN_LOGIN=admin
+      - ACTIVEMQ_ADMIN_PASSWORD=admin
+  productor:
+    build:
+      context: ./productor
+    container_name: productor
+    ports:
+      - "3000:3000"

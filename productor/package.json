@@ -1,0 +1,15 @@
+{
+  "name": "activemq-publisher",
+  "version": "1.0.0",
+  "description": "Publicador de ActiveMQ usando Node.js",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "stompit": "^1.0.0",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.1.6"
+  }
+}

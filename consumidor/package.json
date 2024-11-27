@@ -1,0 +1,15 @@
+{
+  "name": "activemq-express-api",
+  "version": "1.0.0",
+  "description": "API en Express suscrita a un topic de ActiveMQ usando stompit",
+  "main": "consumer.js",
+  "scripts": {
+    "start": "node consumer.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "stompit": "^1.0.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
