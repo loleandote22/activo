@@ -42,16 +42,23 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 /**
  * @swagger
- * /endpoint/{topic}:
+ * /endpoint/{type}/{name}:
  *   post:
  *     summary: Envía datos a ActiveMQ
  *     parameters:
  *       - in: path
- *         name: topic
+ *         name: type
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: topic/queue
+ *       - in: path
+ *         name: name
  *         required: true
  *         schema:
  *           type: string
  *         description: El tópico al que se enviarán los datos
+ * 
  *     requestBody:
  *       required: true
  *       content:
@@ -68,9 +75,10 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
  *       500:
  *         description: Error de conexión a ActiveMQ
  */
-app.post('/endpoint/:topic', (req, res) => {
+app.post('/endpoint/:type/:name', (req, res) => {
   const data = req.body;
-  const topic = req.params.topic;
+  const type = req.params.type;
+  const name = req.params.name;
 
   // Conectar a ActiveMQ y enviar el mensaje
   stompit.connect(connectOptions, (error, client) => {
@@ -81,7 +89,7 @@ app.post('/endpoint/:topic', (req, res) => {
     }
 
     const frame = client.send({
-      destination: `/topic/${topic}`, // Usa el parámetro de la URL como destino
+      destination: `/${type}/${name}`, // Usa el parámetro de la URL como destino
     });
     frame.write(JSON.stringify(data));
     frame.end();
