@@ -9,7 +9,7 @@ const connectOptions = {
     host: '/',
     login: 'admin',
     passcode: 'admin',
-    'heart-beat': '5000,5000'
+    'heart-beat': '10000,10000'
   }
 };
 

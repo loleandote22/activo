@@ -22,10 +22,4 @@ services:
       context: ./consumidor/javascript
     container_name: consumidor_js
     ports:
-      - "3001:3001"
-  consumidor_py:
-    build:
-      context: ./consumidor/python
-    container_name: consumidor_py
-    ports:
-      - "3002:3002"
+      - "3001:3000"
