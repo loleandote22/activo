@@ -17,3 +17,15 @@ services:
     container_name: productor
     ports:
       - "3000:3000"
+  consumidor_js:
+    build:
+      context: ./consumidor/javascript
+    container_name: consumidor_js
+    ports:
+      - "3001:3001"
+  consumidor_py:
+    build:
+      context: ./consumidor/python
+    container_name: consumidor_py
+    ports:
+      - "3002:3002"

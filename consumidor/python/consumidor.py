@@ -8,10 +8,10 @@ class ChatConsumer(stomp.ConnectionListener):
         print(f"Mensaje recibido: {message}")
 
 # Configuración
-host = 'activemq'
+host = 'localhost'
 port = 61613
-topic = '/topic/tropico'
-
+topic = '/queue/tropico'
+print("HOla ya estoy aqui")
 conn = stomp.Connection([(host, port)])
 conn.set_listener('', ChatConsumer(conn))
 conn.start()
@@ -23,9 +23,10 @@ conn.subscribe(destination=topic, id=1, ack='auto')
 print("Escuchando mensajes... Presiona Ctrl+C para salir.")
 
 # Mantener el programa activo
+i = 0
 try:
     while True:
-        pass
+        i += 1
 except KeyboardInterrupt:
     print("\nDesconectando...")
     conn.disconnect()

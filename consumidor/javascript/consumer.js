@@ -3,7 +3,7 @@ const { getMaxListeners } = require('stompit/lib/IncomingFrameStream');
 
 
 const connectOptions = {
-  host: 'localhost',
+  host: 'activemq',
   port: 61613,
   connectHeaders: {
     host: '/',
@@ -20,7 +20,7 @@ stompit.connect(connectOptions, (error, client) => {
   }
 
   const subscribeHeaders = {
-    destination: '/topic/tropico',
+    destination: '/queue/tropico',
     ack: 'client-individual'
   };
   client.setMaxListeners(2000);
